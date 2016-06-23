@@ -54,11 +54,7 @@ public class WindowCameraMouvement : ICameraMouvement {
         
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(Vector3.up, Vector3.zero);
-    }
+    
     public Vector3 GetPosition()
     {
         return m_position;
