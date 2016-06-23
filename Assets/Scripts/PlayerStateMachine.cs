@@ -25,6 +25,9 @@ public class PlayerStateMachine : MonoBehaviour {
     public Rigidbody2D m_rb2D;
     [HideInInspector]
     public Transform m_transform;
+    [HideInInspector]
+    public Animator m_animator;
+    public SpriteRenderer m_sr;
 
     #endregion
 
@@ -34,6 +37,8 @@ public class PlayerStateMachine : MonoBehaviour {
     {
         m_transform = GetComponent<Transform>();
         m_rb2D = GetComponent<Rigidbody2D>();
+        m_animator = GetComponent<Animator>();
+        
         
     }
 

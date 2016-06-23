@@ -21,7 +21,7 @@ public class WindowCameraMouvement : ICameraMouvement {
         float distanceY = m_camera.m_player.position.y - m_camera.m_transform.position.y;
         // Update Offset
 
-        bool isMovingRight = distanceX>0 && distanceX>m_dimension.x+m_offSet.x;
+        bool isMovingRight = distanceX > 0 && distanceX > m_dimension.x+m_offSet.x;
         bool isMovingLeft = distanceX<0 && Mathf.Abs(distanceX)>m_dimension.x;
         bool isMovingUP = distanceY>0 && distanceY>m_dimension.y;
         bool isMovingDown = distanceY<0 && Mathf.Abs(distanceY)>m_dimension.y;
@@ -30,7 +30,7 @@ public class WindowCameraMouvement : ICameraMouvement {
 
         if( isMovingRight )
         {
-            position.x = m_camera.m_player.position.x - m_dimension.x;            
+            position.x = m_camera.m_player.position.x - m_dimension.x -m_offSet.x;            
         }
 
         if( isMovingLeft )
@@ -49,14 +49,28 @@ public class WindowCameraMouvement : ICameraMouvement {
 
         
         m_position = position;
+        DrawLimits();
         
         
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(Vector3.up, Vector3.zero);
     }
     public Vector3 GetPosition()
     {
         return m_position;
     }
+    #region Private Methods
 
+    private void DrawLimits()
+    {
+        
+    }
+
+    #endregion
     #region Private Members
 
     private Vector3 m_position;

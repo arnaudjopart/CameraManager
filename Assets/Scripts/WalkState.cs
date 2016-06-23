@@ -20,7 +20,21 @@ public class WalkState : IState {
 
         Vector3 feetPosition = m_player.m_collideDetector.position;
 
+        
+
         float directionOnX = Input.GetAxis("Horizontal");
+
+        if (directionOnX < -0.1f)
+        {
+            m_player.m_sr.flipX = true;
+        }
+
+        if (directionOnX > 0.1f)
+        {
+            m_player.m_sr.flipX = false;
+        }
+
+        m_player.m_animator.SetFloat("IdleWalkBlend", Mathf.Abs(directionOnX));
         m_player.m_rb2D.velocity = new Vector2( m_player.m_accelerationCurve.Evaluate( Mathf.Abs( directionOnX ) ) * (Mathf.Sign( directionOnX ) * m_player.m_speedMax), m_player.m_rb2D.velocity.y );
 
         RaycastHit2D hit;

@@ -20,8 +20,9 @@ public class CameraManager : MonoBehaviour {
     void Start()
     {
         m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 5, 2 ),new Vector2( 1, 1) ) );
-        m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 0, 2 ), new Vector2( 1, 1 ) ) );
-        m_currentCameraMouvement = m_mouvementList[ 1 ];
+        m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 5, 2 ), new Vector2( -4, 0) ) );
+        m_mouvementList.Add(new WindowCameraMouvement(this, new Vector2(0, 1.5f), new Vector2(0, 0)));
+        m_currentCameraMouvement = m_mouvementList[ 2 ];
         m_currentCameraMouvement.Init( m_transform.position );
     }
 
@@ -33,6 +34,11 @@ public class CameraManager : MonoBehaviour {
         m_transform.position = m_currentCameraMouvement.GetPosition();
     }
 
+    void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawLine(Vector3.up, Vector3.zero);
+    }
     #endregion
 
     #region Private Members    
