@@ -19,8 +19,9 @@ public class CameraManager : MonoBehaviour {
     }
     void Start()
     {
-        m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 5, 2 ) ) );
-        m_currentCameraMouvement = m_mouvementList[ 0 ];
+        m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 5, 2 ),new Vector2( 1, 1) ) );
+        m_mouvementList.Add( new WindowCameraMouvement( this, new Vector2( 0, 2 ), new Vector2( 1, 1 ) ) );
+        m_currentCameraMouvement = m_mouvementList[ 1 ];
         m_currentCameraMouvement.Init( m_transform.position );
     }
 

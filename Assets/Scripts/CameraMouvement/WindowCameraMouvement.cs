@@ -5,10 +5,10 @@ public class WindowCameraMouvement : ICameraMouvement {
 
 
     
-    public WindowCameraMouvement(CameraManager _cam,Vector2 _dimensionOfWindow)
+    public WindowCameraMouvement(CameraManager _cam,Vector2 _dimensionOfWindow, Vector2 _offSet)
     {
         m_camera = _cam;
-
+        m_offSet = _offSet;
         m_dimension = _dimensionOfWindow;
     }
     public void Init(Vector3 _vector)
@@ -19,8 +19,9 @@ public class WindowCameraMouvement : ICameraMouvement {
     {
         float distanceX = m_camera.m_player.position.x - m_camera.m_transform.position.x;
         float distanceY = m_camera.m_player.position.y - m_camera.m_transform.position.y;
+        // Update Offset
 
-        bool isMovingRight = distanceX>0 && distanceX>m_dimension.x;
+        bool isMovingRight = distanceX>0 && distanceX>m_dimension.x+m_offSet.x;
         bool isMovingLeft = distanceX<0 && Mathf.Abs(distanceX)>m_dimension.x;
         bool isMovingUP = distanceY>0 && distanceY>m_dimension.y;
         bool isMovingDown = distanceY<0 && Mathf.Abs(distanceY)>m_dimension.y;
@@ -57,9 +58,12 @@ public class WindowCameraMouvement : ICameraMouvement {
     }
 
     #region Private Members
+
     private Vector3 m_position;
+    private Vector3 m_offSet;
     private Vector3 m_dimension;
     private CameraManager m_camera;
+
     #endregion  
 
 }
